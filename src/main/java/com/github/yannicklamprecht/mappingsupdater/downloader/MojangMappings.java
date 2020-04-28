@@ -43,10 +43,10 @@ public class MojangMappings {
     }
 
     public CompletableFuture<MappingUrls> loadVersionDataFor(String url) {
-        // String url = "https://launchermeta.mojang.com/v1/packages/4510f76a7a17472737c68f04a926f916512c496a/20w17a.json";
         return CompletableFuture.supplyAsync(() -> {
             HttpClient httpClient = HttpClient.newHttpClient();
             HttpResponse<String> response;
+
             try {
                 response = httpClient.send(HttpRequest.newBuilder()
                         .GET().uri(URI.create(url)).build(), HttpResponse.BodyHandlers.ofString());
@@ -55,7 +55,7 @@ public class MojangMappings {
                     return gson.fromJson(responseBody, MappingUrls.class);
                 }
             } catch (IOException | InterruptedException e) {
-                e.printStackTrace();
+                CompletableFuture.failedFuture(e);
             }
             return null;
         });

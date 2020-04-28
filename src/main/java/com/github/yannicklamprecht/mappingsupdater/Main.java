@@ -24,7 +24,8 @@ public class Main {
                 .get();
 
         // todo find a solution where tasks are chained and when one completes the other starts to run async
-        MappingUrls mappingUrls = mojangMappings.loadVersionDataFor(versionOptional.get().getUrl()).get();
+        MappingUrls mappingUrls = mojangMappings
+                .loadVersionDataFor(versionOptional.get().getUrl()).get();
 
         System.out.println(mappingUrls);
         // todo use mappings urls to download mappings
