@@ -1,4 +1,4 @@
-package com.github.yannicklamprecht.mappingsupdater.downloader.pojo;
+package com.github.yannicklamprecht.mappingsupdater.downloader.pojo.mojang;
 
 public class Download {
     private String sha1;

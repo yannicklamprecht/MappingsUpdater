@@ -1,8 +1,8 @@
 package com.github.yannicklamprecht.mappingsupdater;
 
 import com.github.yannicklamprecht.mappingsupdater.downloader.MojangMappings;
-import com.github.yannicklamprecht.mappingsupdater.downloader.pojo.MappingUrls;
-import com.github.yannicklamprecht.mappingsupdater.downloader.pojo.Version;
+import com.github.yannicklamprecht.mappingsupdater.downloader.pojo.mojang.MappingUrls;
+import com.github.yannicklamprecht.mappingsupdater.downloader.pojo.mojang.Version;
 import com.github.yannicklamprecht.mappingsupdater.proguard.ProguardMappingTree;
 
 import java.io.BufferedWriter;

@@ -1,7 +1,7 @@
 package com.github.yannicklamprecht.mappingsupdater.downloader;
 
-import com.github.yannicklamprecht.mappingsupdater.downloader.pojo.ClientMeta;
-import com.github.yannicklamprecht.mappingsupdater.downloader.pojo.MappingUrls;
+import com.github.yannicklamprecht.mappingsupdater.downloader.pojo.mojang.ClientMeta;
+import com.github.yannicklamprecht.mappingsupdater.downloader.pojo.mojang.MappingUrls;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

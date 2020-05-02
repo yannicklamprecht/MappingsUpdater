@@ -1,4 +1,4 @@
-package com.github.yannicklamprecht.mappingsupdater.downloader.pojo;
+package com.github.yannicklamprecht.mappingsupdater.downloader.pojo.mojang;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
