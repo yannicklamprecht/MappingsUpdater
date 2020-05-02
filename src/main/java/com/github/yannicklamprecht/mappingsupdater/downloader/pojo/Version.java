@@ -1,4 +1,3 @@
-
 package com.github.yannicklamprecht.mappingsupdater.downloader.pojo;
 
 import com.google.gson.annotations.Expose;

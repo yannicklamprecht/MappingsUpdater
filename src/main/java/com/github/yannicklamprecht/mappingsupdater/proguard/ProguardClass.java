@@ -1,7 +1,5 @@
 package com.github.yannicklamprecht.mappingsupdater.proguard;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -11,8 +9,8 @@ import static com.github.yannicklamprecht.mappingsupdater.proguard.ProGuardRegex
 public class ProguardClass {
     private String clearName;
     private String obfName;
-    private List<ProguardField> fields = new ArrayList<>();
-    private List<ProguardMethod> methods = new ArrayList<>();
+    private final List<ProguardField> fields = new ArrayList<>();
+    private final List<ProguardMethod> methods = new ArrayList<>();
 
 
     private ProguardClass() {
@@ -50,14 +48,14 @@ public class ProguardClass {
                 '}';
     }
 
-    public void asProGuardMappings(BufferedWriter bufferedWriter) throws IOException {
-        bufferedWriter.newLine();
-        bufferedWriter.append(clearName + " -> " + obfName + ":");
+    public void asProGuardMappings(List<String> lines) {
+        lines.add(clearName + " -> " + obfName + ":");
+
         for (ProguardField field : fields) {
-            field.asProGuardMappings(bufferedWriter);
+            field.asProGuardMappings(lines);
         }
         for (ProguardMethod method : methods) {
-            method.asProGuardMappings(bufferedWriter);
+            method.asProGuardMappings(lines);
         }
     }
 }

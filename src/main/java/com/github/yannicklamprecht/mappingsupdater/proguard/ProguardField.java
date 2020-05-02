@@ -1,7 +1,6 @@
 package com.github.yannicklamprecht.mappingsupdater.proguard;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.util.List;
 import java.util.regex.Matcher;
 
 import static com.github.yannicklamprecht.mappingsupdater.proguard.ProGuardRegex.FIELD;
@@ -11,7 +10,6 @@ public class ProguardField {
     private String clearName;
     private String obfName;
     private String type;
-
 
 
     private ProguardField() {
@@ -42,8 +40,9 @@ public class ProguardField {
         return FIELD.matcher(line).matches();
     }
 
-    public void asProGuardMappings(BufferedWriter bufferedWriter) throws IOException {
-        bufferedWriter.newLine();
-        bufferedWriter.append("    "+ type + " " + clearName + " -> " + obfName);
+    public void asProGuardMappings(List<String> lines) {
+        lines.add("    " + type + " " + clearName + " -> " + obfName);
     }
+
+
 }

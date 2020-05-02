@@ -1,14 +1,10 @@
 package com.github.yannicklamprecht.mappingsupdater.downloader;
 
 import com.github.yannicklamprecht.mappingsupdater.downloader.pojo.ClientMeta;
-import com.github.yannicklamprecht.mappingsupdater.downloader.pojo.Downloads;
 import com.github.yannicklamprecht.mappingsupdater.downloader.pojo.MappingUrls;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -59,6 +55,27 @@ public class MojangMappings {
             }
             return null;
         });
+    }
+
+
+    public CompletableFuture<String> fetch(MappingUrls mappingUrls) {
+        return CompletableFuture.supplyAsync(() -> {
+            HttpClient httpClient = HttpClient.newHttpClient();
+            HttpResponse<String> response;
+
+            try {
+                response = httpClient.send(HttpRequest.newBuilder()
+                        .GET().uri(URI.create(mappingUrls.getDownloads().getServerMappings().getUrl())).build(), HttpResponse.BodyHandlers.ofString());
+                if (response.statusCode() == 200) {
+                    return response.body();
+                }
+            } catch (IOException | InterruptedException e) {
+                CompletableFuture.failedFuture(e);
+            }
+            return null;
+        });
+
+
     }
 
 

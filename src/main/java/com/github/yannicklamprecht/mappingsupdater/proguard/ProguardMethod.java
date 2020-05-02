@@ -3,6 +3,7 @@ package com.github.yannicklamprecht.mappingsupdater.proguard;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 
 import static com.github.yannicklamprecht.mappingsupdater.proguard.ProGuardRegex.METHOD;
@@ -49,8 +50,7 @@ public class ProguardMethod {
         return METHOD.matcher(line).matches();
     }
 
-    public void asProGuardMappings(BufferedWriter bufferedWriter) throws IOException {
-        bufferedWriter.newLine();
-        bufferedWriter.append("    "+((lineNumbers.length>0 && !lineNumbers[0].isEmpty()) ? (String.join(":", lineNumbers) + ":"): "") + returnType + " " + clearName + "(" + String.join(",", parameters) + ") -> " + obfName);
+    public void asProGuardMappings(List<String> lines) {
+        lines.add("    "+((lineNumbers.length>0 && !lineNumbers[0].isEmpty()) ? (String.join(":", lineNumbers) + ":"): "") + returnType + " " + clearName + "(" + String.join(",", parameters) + ") -> " + obfName);
     }
 }
